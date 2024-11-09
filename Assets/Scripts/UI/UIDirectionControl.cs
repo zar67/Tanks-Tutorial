@@ -22,7 +22,9 @@ namespace Complete
         private void Update ()
         {
             if (m_UseRelativeRotation)
+            {
                 transform.rotation = m_RelativeRotation;
+            }
         }
     }
 }
