@@ -123,22 +123,22 @@ public class TankMovement : MonoBehaviour
 
     private void Move()
     {
-        // TODO: Create a vector in the direction the tank is facing with a magnitude based on the input, speed and the time between frames.
+        // Create a vector in the direction the tank is facing with a magnitude based on the input, speed and the time between frames.
+        Vector3 movement = transform.forward * m_movementInputValue * Speed * Time.deltaTime;
 
-
-        // TODO: Apply this movement to the rigidbody's position.
-
+        // Apply this movement to the rigidbody's position.
+        m_rigidbody.MovePosition(m_rigidbody.position + movement);
     }
 
     private void Turn()
     {
-        // TODO: Determine the number of degrees to be turned based on the input, speed and time between frames.
+        // Determine the number of degrees to be turned based on the input, speed and time between frames.
+        float turn = m_turnInputValue * TurnSpeed * Time.deltaTime;
 
+        // Make this into a rotation in the y axis.
+        var turnRotation = Quaternion.Euler(0f, turn, 0f);
 
-        // TODO: Make this into a rotation in the y axis.
-
-
-        // TODO: Apply this rotation to the rigidbody's rotation.
-
+        // Apply this rotation to the rigidbody's rotation.
+        m_rigidbody.MoveRotation(m_rigidbody.rotation * turnRotation);
     }
 }
