@@ -34,13 +34,13 @@ public class TankShooting : MonoBehaviour
 
     private void Fire()
     {
-        // TODO: Create an instance of the shell and store a reference to it's rigidbody.
+        // Create an instance of the shell and store a reference to it's rigidbody.
+        Rigidbody shellInstance = Instantiate(Shell, FireTransform.position, FireTransform.rotation);
 
+        // Set the shell's velocity to the launch force in the fire position's forward direction.
+        shellInstance.linearVelocity = FireTransform.forward * LaunchForce;
 
-        // TODO: Set the shell's velocity to the launch force in the fire position's forward direction.
-
-
-        // TODO: Play the audio clip.
-
+        // Play the audio clip.
+        ShootingAudio.Play();
     }
 }
