@@ -39,14 +39,17 @@ public class TankHealth : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        // TODO: Reduce current health by the amount of damage done.
+        // Reduce current health by the amount of damage done.
+        m_currentHealth -= amount;
 
+        // Change the UI elements appropriately.
+        SetHealthUI();
 
-        // TODO: Change the UI elements appropriately.
-
-
-        // TODO: If the current health is at or below zero and it has not yet been registered, call OnDeath.
-
+        // If the current health is at or below zero and it has not yet been registered, call OnDeath.
+        if (m_currentHealth <= 0f && !m_dead)
+        {
+            OnDeath();
+        }
     }
 
     private void SetHealthUI()
